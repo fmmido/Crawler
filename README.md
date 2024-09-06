@@ -1,4 +1,4 @@
-Website Crawler for pen testing (Web Crawler using Selenium)
+## Website Crawler for pen testing (Web Crawler using Selenium)
 
 This project is a simple web crawler built using Selenium and Python. It navigates to a starting URL, collects all links from the page, and recursively crawls these links while storing the crawled URLs in a text file.
 

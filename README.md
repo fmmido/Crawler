@@ -19,7 +19,7 @@ This project is a simple web crawler built using Selenium and Python. It navigat
 
 1. Clone the repository:
     ```bash
-    git clone https://github.com/your-username/your-repository.git
+    git clone https://github.com/fmmido/Website-Crawler-for-pen-testing.git
     ```
 
 2. Install required Python packages:

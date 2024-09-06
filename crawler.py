@@ -5,14 +5,13 @@ from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 import datetime
-import atexit
-import time
 import os
 
 firefox_options = Options()
 firefox_options.add_argument("--headless")
 
 service = Service('/usr/local/bin/geckodriver')
+
 driver = webdriver.Firefox(service=service, options=firefox_options)
 
 visited_urls = set()
@@ -25,8 +24,6 @@ def save_urls():
         for i, url in enumerate(sorted(visited_urls), start=1):
             file.write(f"Indexed {i}: {url}\n")
     print(f"URLs saved to {filename}")
-
-atexit.register(save_urls)
 
 def crawl_page(url):
     if url in visited_urls or not url.startswith('http'):
@@ -56,7 +53,12 @@ def crawl_page(url):
         print(f"Failed to crawl {url}: {e}")
 
 try:
-    start_url = 'https://facebook.com/'
+    
+    start_url = input("Enter the URL to start crawling: ").strip()
+    if not start_url.startswith('http'):
+        print("Invalid URL. Please start with 'http' or 'https'.")
+        exit(1)
+    
     url_queue.add(start_url)
 
     while url_queue:
